@@ -1,0 +1,28 @@
+CREATE TABLE ADMIN (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) NOT NULL,
+    PASSWORD VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+CREATE TABLE employee (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    NAME VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    PASSWORD VARCHAR(255) NOT NULL,
+    address TEXT NOT NULL,
+    salary DECIMAL(10, 2) NOT NULL,
+    image VARCHAR(255),
+    category_id INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (category_id) REFERENCES category(id)
+);
+CREATE TABLE category (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    NAME VARCHAR(255) NOT NULL
+);
+INSERT INTO ADMIN (email, PASSWORD) 
+VALUES ('admin@example.com', 'admin123');
+INSERT INTO category (NAME) 
+VALUES ('Software Developer');
+INSERT INTO employee (NAME, email, PASSWORD, address, salary, category_id) 
+VALUES ('John Doe', 'johndoe@example.com', 'employee123', '123 Main Street', 5000.00, 1);
