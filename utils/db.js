@@ -1,20 +1,21 @@
-import mysql from 'mysql'
+import mysql from 'mysql';
 
-const con = mysql.createConnection({
-    host: "mysql.railway.internal",
-    user: "root",
-    password: "qwpzEAgQvxcZHgiMLAmeDeBrPTusJloJ",
-    database: "railway",
-    port: 3306,
-})
+const pool = mysql.createPool({
+    connectionLimit: 10,
+    host: 'mysql.railway.internal',
+    user: 'root',
+    password: 'qwpzEAgQvxcZHgiMLAmeDeBrPTusJloJ',
+    database: 'railway',
+    port: 3306
+});
 
-con.connect(function(err) {
-    if(err) {
-        console.log("connection error")
-    } else {
-        console.log("Connected")
+pool.getConnection((err, connection) => {
+    if (err) {
+        console.log("Error connecting to the database:", err.message);
+        return;
     }
-})
+    console.log("Connected to the database");
+    connection.release();  
+});
 
-export default con;
-
+export default pool;
