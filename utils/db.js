@@ -4,11 +4,12 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const isProduction = process.env.NODE_ENV === 'production'; 
-const host = isProduction ? process.env.MYSQL_HOST : process.env.MYSQL_PUBLIC_URL; 
+
+const host = isProduction ? process.env.MYSQL_HOST : process.env.MYSQL_PUBLIC_URL;
 
 const pool = mysql.createPool({
     connectionLimit: 10,
-    host: host,  // Use internal or public URL
+    host: host,  
     user: process.env.MYSQL_USER,
     password: process.env.MYSQL_PASSWORD,
     database: process.env.MYSQL_DATABASE,
@@ -21,7 +22,7 @@ pool.getConnection((err, connection) => {
         return;
     }
     console.log("Connected to the database");
-    connection.release();  // Release the connection after use
+    connection.release(); 
 });
 
 export default pool;
