@@ -6,7 +6,13 @@ import multer from "multer";
 import path from "path";
 
 const router = express.Router();
-
+const corsOptions = {
+  origin: 'https://react-node-mysql.vercel.app', // Allow only this domain
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
+  credentials: true, // Allow cookies to be sent
+};
+router.use(cors(corsOptions)); 
 router.post("/adminlogin", (req, res) => {
   const sql = "SELECT * from admin Where email = ? and password = ?";
   con.query(sql, [req.body.email, req.body.password], (err, result) => {
