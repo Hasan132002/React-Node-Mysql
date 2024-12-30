@@ -5,12 +5,11 @@ import bcrypt from 'bcrypt';
 import cors from 'cors'; 
 
 const router = express.Router();
-
-// Apply CORS middleware
+ 
 const corsOptions = {
-  origin: 'https://react-node-mysql.vercel.app', // Allow only this domain
+  origin: 'https://react-node-mysql.vercel.app', 
   methods: ['GET', 'POST'], // Allowed methods
-  allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
+  allowedHeaders: ['Content-Type', 'Authorization'], 
   credentials: true, // Allow cookies to be sent
 };
 
