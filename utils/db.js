@@ -11,11 +11,11 @@ console.log(host);
 
 const pool = mysql.createPool({
     connectionLimit: 10,
-    host: host,  
-    user: process.env.MYSQL_USER,
-    password: process.env.MYSQL_PASSWORD,
-    database: process.env.MYSQL_DATABASE,
-    port: process.env.MYSQL_PORT || 3306
+    host: 'roundhouse.proxy.rlwy.net',  
+    user: 'root',
+    password: 'BSwrdhaoxyajrWXRuTqmGrajFafHUKur',
+    database: 'railway',
+    port: 27067
 });
 console.log(pool);
 
