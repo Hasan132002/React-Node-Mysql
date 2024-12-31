@@ -17,7 +17,7 @@ const AddEmployee = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/auth/category")
+      .get("https://react-node-mysql-production.up.railway.app/auth/category")
       .then((result) => {
         if (result.data.Status) {
           setCategory(result.data.Result);
