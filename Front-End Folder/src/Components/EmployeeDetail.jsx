@@ -8,7 +8,7 @@ const EmployeeDetail = () => {
     const {id} = useParams()
     const navigate = useNavigate()
     useEffect(() => {
-        axios.get('http://localhost:3000/employee/detail/'+id)
+        axios.get('https://react-node-mysql-production.up.railway.app/employee/detail/'+id)
         .then(result => {
             setEmployee(result.data[0])
         })
