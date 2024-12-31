@@ -24,7 +24,7 @@ const EditEmployee = () => {
             }
         }).catch(err => console.log(err))
 
-        axios.get('http://localhost:3000/auth/employee/'+id)
+        axios.get('https://react-node-mysql-production.up.railway.app/auth/employee/'+id)
         .then(result => {
             setEmployee({
                 ...employee,
