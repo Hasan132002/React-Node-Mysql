@@ -2,10 +2,12 @@ import mysql from 'mysql';
 import dotenv from 'dotenv';
 
 dotenv.config();
+console.log('sss');
 
 const isProduction = process.env.NODE_ENV === 'production'; 
 
 const host = isProduction ? process.env.MYSQL_HOST : process.env.MYSQL_PUBLIC_URL;
+console.log(host);
 
 const pool = mysql.createPool({
     connectionLimit: 10,
@@ -15,6 +17,7 @@ const pool = mysql.createPool({
     database: process.env.MYSQL_DATABASE,
     port: process.env.MYSQL_PORT || 3306
 });
+console.log(pool);
 
 pool.getConnection((err, connection) => {
     if (err) {
