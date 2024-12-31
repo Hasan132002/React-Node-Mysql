@@ -14,7 +14,7 @@ const Login = () => {
     axios.defaults.withCredentials = true;
     const handleSubmit = (event) => {
         event.preventDefault()
-        axios.post('http://localhost:3000/auth/adminlogin', values)
+        axios.post('https://react-node-mysql.vercel.app/auth/adminlogin', values)
         .then(result => {
             if(result.data.loginStatus) {
                 localStorage.setItem("valid", true)
