@@ -9,7 +9,9 @@ import cors from 'cors';
 
 const router = express.Router();
 const corsOptions = {
-  origin: 'https://react-node-mysql.vercel.app', // Allow only this domain
+  // origin: 'https://react-node-mysql.vercel.app', // Allow only this domain
+  origin: ["https://react-node-mysql.vercel.app"],
+
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
   allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
   credentials: true, // Allow cookies to be sent
