@@ -7,7 +7,7 @@ const Dashboard = () => {
   const anvigate = useNavigate()
   axios.defaults.withCredentials = true
   const handleLogout = () => {
-    axios.get('http://localhost:3000/auth/logout')
+    axios.get('https://react-node-mysql-production.up.railway.app/auth/logout')
     .then(result => {
       if(result.data.Status) { 
         localStorage.removeItem("valid")
