@@ -11,13 +11,16 @@ const EmployeeLogin = () => {
     const [error, setError] = useState(null)
     const navigate = useNavigate()
     axios.defaults.withCredentials = true;
+    
     const handleSubmit = (event) => {
         event.preventDefault()
         axios.post('https://react-node-mysql-production.up.railway.app/employee/employee_login', values)
         .then(result => {
             if(result.data.loginStatus) {
+                console.log(result.data.id);
                 localStorage.setItem("valid", true)
                 navigate('/employee_detail/'+result.data.id)
+
             } else {
                 setError(result.data.Error)
             }
