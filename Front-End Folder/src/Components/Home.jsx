@@ -25,7 +25,7 @@ const Home = () => {
     })
   }
   const adminCount = () => {
-    axios.get('http://localhost:3000/auth/admin_count')
+    axios.get('https://react-node-mysql-production.up.railway.app/auth/admin_count')
     .then(result => {
       if(result.data.Status) {
         setAdminTotal(result.data.Result[0].admin)
@@ -33,7 +33,7 @@ const Home = () => {
     })
   }
   const employeeCount = () => {
-    axios.get('http://localhost:3000/auth/employee_count')
+    axios.get('https://react-node-mysql-production.up.railway.app/auth/employee_count')
     .then(result => {
       if(result.data.Status) {
         setemployeeTotal(result.data.Result[0].employee)
@@ -41,7 +41,7 @@ const Home = () => {
     })
   }
   const salaryCount = () => {
-    axios.get('http://localhost:3000/auth/salary_count')
+    axios.get('https://react-node-mysql-production.up.railway.app/auth/salary_count')
     .then(result => {
       if(result.data.Status) {
         setSalaryTotal(result.data.Result[0].salaryOFEmp)
