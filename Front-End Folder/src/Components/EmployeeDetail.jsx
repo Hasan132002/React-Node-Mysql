@@ -15,7 +15,7 @@ const EmployeeDetail = () => {
         .catch(err => console.log(err))
     }, [])
     const handleLogout = () => {
-        axios.get('http://localhost:3000/employee/logout')
+        axios.get('https://react-node-mysql-production.up.railway.app/employee/logout')
         .then(result => {
           if(result.data.Status) {
             localStorage.removeItem("valid")
