@@ -15,7 +15,7 @@ const EditEmployee = () => {
       const navigate = useNavigate()
 
       useEffect(()=> {
-        axios.get('http://localhost:3000/auth/category')
+        axios.get('https://react-node-mysql-production.up.railway.app/auth/category')
         .then(result => {
             if(result.data.Status) {
                 setCategory(result.data.Result);
@@ -39,7 +39,7 @@ const EditEmployee = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.put('http://localhost:3000/auth/edit_employee/'+id, employee)
+        axios.put('https://react-node-mysql-production.up.railway.app/auth/edit_employee/'+id, employee)
         .then(result => {
             if(result.data.Status) {
                 navigate('/dashboard/employee')
