@@ -56,6 +56,8 @@ router.post("/add_employee", (req, res) => {
       password: hash,
       address: req.body.address,
       salary: req.body.salary,
+      category_id : req.body.category_id,
+
     };
     employees.push(newEmployee);
     writeJSON(employeeFilePath, employees);
@@ -97,5 +99,51 @@ router.delete("/delete_employee/:id", (req, res) => {
   writeJSON(employeeFilePath, updatedEmployees);
   res.json({ Status: true });
 });
+router.get("/logout", (req, res) => {
+  res.clearCookie("token");
+  res.json({ Status: true });
+});
+
+router.post("/add_category", (req, res) => {
+  const categories = readJSON(categoryFilePath);
+  const newCategory = {
+    id: categories.length + 1, // Simple ID generator
+    name: req.body.category,
+  };
+  categories.push(newCategory);
+  writeJSON(categoryFilePath, categories);
+  res.json({ Status: true, Message: "Category added successfully" });
+});
+
+router.get("/category", (req, res) => {
+  const categories = readJSON(categoryFilePath);
+  res.json({ Status: true, Result: categories });
+});
+
+router.put("/update_category/:id", (req, res) => {
+  const categories = readJSON(categoryFilePath);
+  const categoryIndex = categories.findIndex((cat) => cat.id === parseInt(req.params.id));
+
+  if (categoryIndex === -1) {
+    return res.json({ Status: false, Error: "Category not found" });
+  }
+
+  categories[categoryIndex].name = req.body.category;
+  writeJSON(categoryFilePath, categories);
+  res.json({ Status: true, Message: "Category updated successfully" });
+});
+
+router.delete("/delete_category/:id", (req, res) => {
+  const categories = readJSON(categoryFilePath);
+  const updatedCategories = categories.filter((cat) => cat.id !== parseInt(req.params.id));
+
+  if (categories.length === updatedCategories.length) {
+    return res.json({ Status: false, Error: "Category not found" });
+  }
+
+  writeJSON(categoryFilePath, updatedCategories);
+  res.json({ Status: true, Message: "Category deleted successfully" });
+});
+
 
 export { router as EmployeeRouter };
