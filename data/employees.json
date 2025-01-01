@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "name": "John Doe",
+    "email": "john@example.com",
+    "password": "john123",
+    "address": "123 Main St",
+    "salary": 50000
+  },
+  {
+    "id": 1735740721397,
+    "name": "John Doe",
+    "email": "john@example.com",
+    "password": "$2b$10$9eCjfebTUtWhSoFTcRgBXO3Hw0OMTin1NpK4x2nPqX4aHDerH/dqS",
+    "address": "123 Main St",
+    "salary": 50000
+  }
+]
