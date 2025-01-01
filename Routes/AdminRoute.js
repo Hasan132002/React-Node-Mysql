@@ -52,7 +52,34 @@ router.get("/admin_count", (req, res) => {
   const admins = readJSON(adminFilePath);
   res.json({ Status: true, Count: admins.length });
 });
+router.post("/add_category", (req, res) => {
+  const categories = readJSON(categoryFilePath);
+  const newCategory = {
+    id: categories.length + 1, // Simple ID generator
+    name: req.body.category,
+  };
+  categories.push(newCategory);
+  writeJSON(categoryFilePath, categories);
+  res.json({ Status: true, Message: "Category added successfully" });
+});
 
+router.get("/category", (req, res) => {
+  const categories = readJSON(categoryFilePath);
+  res.json({ Status: true, Result: categories });
+});
+
+router.put("/update_category/:id", (req, res) => {
+  const categories = readJSON(categoryFilePath);
+  const categoryIndex = categories.findIndex((cat) => cat.id === parseInt(req.params.id));
+
+  if (categoryIndex === -1) {
+    return res.json({ Status: false, Error: "Category not found" });
+  }
+
+  categories[categoryIndex].name = req.body.category;
+  writeJSON(categoryFilePath, categories);
+  res.json({ Status: true, Message: "Category updated successfully" });
+});
 // Logout
 router.get("/logout", (req, res) => {
   res.clearCookie("token");
