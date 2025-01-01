@@ -7,7 +7,7 @@ import cors from "cors";
 
 const router = express.Router();
 const corsOptions = {
-  origin: ["http://localhost:5173"],
+  origin: ["https://react-node-mysql.vercel.app"],
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
