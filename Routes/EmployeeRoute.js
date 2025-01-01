@@ -21,16 +21,21 @@ const writeJSONFile = (filePath, data) => {
 router.post("/employee_login", (req, res) => {
     const employees = readJSONFile(employeeFilePath);
     const employee = employees.find(e => e.email === req.body.email);
-    
+
     if (employee) {
         bcrypt.compare(req.body.password, employee.password, (err, response) => {
             if (err) return res.json({ loginStatus: false, Error: "Wrong Password" });
 
             if (response) {
+                // Generate JWT token with the employee's id and email
                 const token = jwt.sign({ role: "employee", email: employee.email, id: employee.id }, "jwt_secret_key", { expiresIn: "1d" });
+
+                // Log employee object for debugging (optional)
                 console.log(employee);
+
+                // Set the token in cookies and return the response with employee's id
                 res.cookie('token', token);
-                return res.json({ loginStatus: true, id: employee.id });
+                return res.json({ loginStatus: true, id: employee.id, name: employee.name }); // Include name for better feedback
             } else {
                 return res.json({ loginStatus: false, Error: "Wrong password" });
             }
@@ -40,10 +45,11 @@ router.post("/employee_login", (req, res) => {
     }
 });
 
+// Endpoint to fetch employee details based on id
 router.get('/detail/:id', (req, res) => {
     const employees = readJSONFile(employeeFilePath);
     const employee = employees.find(e => e.id === parseInt(req.params.id));
-    
+
     if (employee) {
         return res.json({ Status: true, Result: employee });
     } else {
@@ -51,6 +57,7 @@ router.get('/detail/:id', (req, res) => {
     }
 });
 
+// Logout endpoint to clear the token cookie
 router.get('/logout', (req, res) => {
     res.clearCookie('token');
     return res.json({ Status: true });
