@@ -28,6 +28,7 @@ router.post("/employee_login", (req, res) => {
 
             if (response) {
                 const token = jwt.sign({ role: "employee", email: employee.email, id: employee.id }, "jwt_secret_key", { expiresIn: "1d" });
+                console.log(employee);
                 res.cookie('token', token);
                 return res.json({ loginStatus: true, id: employee.id });
             } else {
