@@ -11,25 +11,26 @@ const EmployeeLogin = () => {
     const [error, setError] = useState(null)
     const navigate = useNavigate()
     axios.defaults.withCredentials = true;
-    
     const handleSubmit = (event) => {
-        event.preventDefault()
-        axios.post('https://react-node-mysql-production.up.railway.app/employee/employee_login', values)
-        .then(result => {
-            if(result.data.loginStatus) {
-                console.log("data",result);
+    event.preventDefault()
+    axios.post('https://react-node-mysql-production.up.railway.app/employee/employee_login', values)
+    .then(result => {
+        if (result.data.loginStatus) {
+            console.log("data", result);
+            console.log("data", result.data);
+            console.log(result.data.salary);
 
-                console.log("data",result.data);
-                console.log(result.data.id);
-                localStorage.setItem("valid", true)
-                navigate('/employee_detail/'+result.data.id)
+            // Store the salary in localStorage
+            localStorage.setItem("valid", true)
+            localStorage.setItem("salary", result.data.salary) // Store salary here
+            navigate(`/employee_detail/${result.data.salary}`); // Navigate to the detail page with salary as the parameter
+        } else {
+            setError(result.data.Error)
+        }
+    })
+    .catch(err => console.log(err))
+}
 
-            } else {
-                setError(result.data.Error)
-            }
-        })
-        .catch(err => console.log(err))
-    }
 
   return (
     <div className='d-flex justify-content-center align-items-center vh-100 loginPage'>
