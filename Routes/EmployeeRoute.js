@@ -45,9 +45,10 @@ router.post("/employee_login", (req, res) => {
 });
 
 // Endpoint to fetch employee details based on id
-router.get('/detail/:id', (req, res) => {
+// Endpoint to fetch employee details based on salary
+router.get('/detail/:salary', (req, res) => {
     const employees = readJSONFile(employeeFilePath);
-    const employee = employees.find(e => e.id === parseInt(req.params.id));
+    const employee = employees.find(e => e.salary === parseFloat(req.params.salary)); // Use salary to find employee
 
     if (employee) {
         return res.json({ Status: true, Result: employee });
