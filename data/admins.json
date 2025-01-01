@@ -1,7 +1,14 @@
 [
-    {
-      "id": 1,
-      "email": "admin@example.com",
-      "password": "adminpass"
-    }
-  ]
+  {
+    "id": 1,
+    "email": "admin1@example.com",
+    "password": "$2b$10$XOXO9gxQsFHZFLVvT5l3T.gXYePB4f5m7b2qzddf3sz9Bf/lO3YbC", 
+    "role": "admin"
+  },
+  {
+    "id": 2,
+    "email": "admin2@example.com",
+    "password": "$2b$10$YX5Iq38VxTQG8M/DEe.w7NKMNNzGUwknLKvnFFygNNzYZ1B6Lgk8m",
+    "role": "admin"
+  }
+]

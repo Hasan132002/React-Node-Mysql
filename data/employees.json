@@ -2,17 +2,31 @@
   {
     "id": 1,
     "name": "John Doe",
-    "email": "john@example.com",
-    "password": "john123",
-    "address": "123 Main St",
-    "salary": 50000
+    "email": "john.doe@example.com",
+    "password": "$2b$10$smPTeFrgyOUQomqZaUkf3uHX27ZqZq4fwTyqelU4yWAq2s/mO7wHu",
+    "address": "1234 Elm Street, Springfield",
+    "salary": 50000,
+    "category_id": 1,
+    "image": "john_doe_image.jpg"
   },
   {
-    "id": 1735740721397,
-    "name": "John Doe",
-    "email": "john@example.com",
-    "password": "$2b$10$9eCjfebTUtWhSoFTcRgBXO3Hw0OMTin1NpK4x2nPqX4aHDerH/dqS",
-    "address": "123 Main St",
-    "salary": 50000
+    "id": 2,
+    "name": "Jane Smith",
+    "email": "jane.smith@example.com",
+    "password": "$2b$10$smPTeFrgyOUQomqZaUkf3uHX27ZqZq4fwTyqelU4yWAq2s/mO7wHu",
+    "address": "5678 Oak Avenue, Springfield",
+    "salary": 60000,
+    "category_id": 2,
+    "image": "jane_smith_image.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Mark Wilson",
+    "email": "mark.wilson@example.com",
+    "password": "$2b$10$smPTeFrgyOUQomqZaUkf3uHX27ZqZq4fwTyqelU4yWAq2s/mO7wHu",
+    "address": "9101 Pine Boulevard, Springfield",
+    "salary": 45000,
+    "category_id": 3,
+    "image": "mark_wilson_image.jpg"
   }
 ]
