@@ -17,6 +17,9 @@ const EmployeeLogin = () => {
         axios.post('https://react-node-mysql-production.up.railway.app/employee/employee_login', values)
         .then(result => {
             if(result.data.loginStatus) {
+                console.log("data",result);
+
+                console.log("data",result.data);
                 console.log(result.data.id);
                 localStorage.setItem("valid", true)
                 navigate('/employee_detail/'+result.data.id)
