@@ -17,7 +17,6 @@ const readJSONFile = (filePath) => {
 const writeJSONFile = (filePath, data) => {
     fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
 };
-
 router.post("/employee_login", (req, res) => {
     const employees = readJSONFile(employeeFilePath);
     const employee = employees.find(e => e.email === req.body.email);
@@ -27,15 +26,15 @@ router.post("/employee_login", (req, res) => {
             if (err) return res.json({ loginStatus: false, Error: "Wrong Password" });
 
             if (response) {
-                // Generate JWT token with the employee's id and email
+                // Generate JWT token with the employee's email and role
                 const token = jwt.sign({ role: "employee", email: employee.email, id: employee.id }, "jwt_secret_key", { expiresIn: "1d" });
 
                 // Log employee object for debugging (optional)
                 console.log(employee);
 
-                // Set the token in cookies and return the response with employee's id
+                // Set the token in cookies and return the response with employee's salary
                 res.cookie('token', token);
-                return res.json({ loginStatus: true, id: employee.id, name: employee.name }); // Include name for better feedback
+                return res.json({ loginStatus: true, salary: employee.salary, name: employee.name }); // Return salary instead of id
             } else {
                 return res.json({ loginStatus: false, Error: "Wrong password" });
             }
